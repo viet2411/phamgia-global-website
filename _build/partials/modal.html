@@ -1,0 +1,36 @@
+<!-- Nút liên hệ nhanh -->
+<div class="float-contact">
+  <a href="https://zalo.me/0984041978" target="_blank" rel="noopener" class="fc-zalo" aria-label="Chat Zalo">Zalo</a>
+  <a href="tel:0984041978" class="fc-phone" aria-label="Gọi điện"><svg class="ic"><use href="#i-phone"/></svg></a>
+</div>
+<button class="to-top" id="toTop" aria-label="Lên đầu trang"><svg class="ic"><use href="#i-arrow"/></svg></button>
+
+<!-- Popup yêu cầu báo giá -->
+<div id="rfqModal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="rfqTitle">
+    <button class="modal-close" data-close-modal aria-label="Đóng">×</button>
+    <span class="eyebrow">RFQ / BOQ</span>
+    <h2 id="rfqTitle">Yêu cầu báo giá B2B</h2>
+    <p class="modal-sub">Điền thông tin nhu cầu – bộ phận kinh doanh sẽ liên hệ lại để tư vấn và báo giá.</p>
+    <form class="lead-form" id="rfqForm" data-form-name="Yêu cầu báo giá">
+      <div class="form-grid">
+        <div class="field"><label for="r-company">Tên doanh nghiệp *</label><input id="r-company" required name="company"></div>
+        <div class="field"><label for="r-contact">Người liên hệ *</label><input id="r-contact" required name="contact"></div>
+        <div class="field"><label for="r-phone">Điện thoại *</label><input id="r-phone" required name="phone" type="tel"></div>
+        <div class="field"><label for="r-email">Email *</label><input id="r-email" required type="email" name="email"></div>
+        <div class="field"><label for="r-product">Thiết bị / sản phẩm cần mua</label><input id="r-product" name="product"></div>
+        <div class="field"><label for="r-qty">Số lượng</label><input id="r-qty" name="qty"></div>
+        <div class="field"><label for="r-location">Địa điểm giao hàng</label><input id="r-location" name="location"></div>
+        <div class="field"><label for="r-brand">Thương hiệu mong muốn</label><input id="r-brand" name="brand"></div>
+      </div>
+      <div class="field"><label for="r-spec">Yêu cầu kỹ thuật / thông số / thời gian cần hàng</label><textarea id="r-spec" name="spec" rows="3"></textarea></div>
+      <div class="field"><label for="r-link">Link BOQ / catalogue (Google Drive, OneDrive…)</label><input id="r-link" name="file_link" type="url" placeholder="https://"></div>
+      <p class="form-note">Có file Excel/PDF? Bạn có thể dán link chia sẻ ở trên, hoặc gửi trực tiếp tới <a href="mailto:Phamgia.jsc2019@gmail.com">Phamgia.jsc2019@gmail.com</a>.</p>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-primary full" type="submit">Gửi yêu cầu báo giá</button>
+      <div class="form-status" role="status"></div>
+    </form>
+  </div>
+</div>
+

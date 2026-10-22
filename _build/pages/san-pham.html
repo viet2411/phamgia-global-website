@@ -1,0 +1,39 @@
+<!--
+title: Sản phẩm & thiết bị | Phạm Gia Global
+desc: Danh mục thiết bị tham khảo: máy hàn, máy nén khí, máy phát điện, thiết bị thủy lực, sơn hàng hải, thiết bị PCCC, cứu hộ, UAV, robot. Tìm theo tên, model và gửi yêu cầu báo giá.
+nav: products
+url: san-pham.html
+-->
+
+<section class="page-hero">
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a><span>/</span><span>Sản phẩm</span></nav>
+    <h1>Tìm đúng thiết bị – nhận báo giá nhanh</h1>
+    <p>Danh mục tham khảo. Giá bán được xác nhận theo thời điểm, số lượng và điều kiện giao hàng. Không thấy sản phẩm cần tìm? Hãy gửi yêu cầu – chúng tôi tìm nguồn giúp bạn.</p>
+  </div>
+</section>
+
+<section class="section section-tight">
+  <div class="container">
+    <div class="product-toolbar">
+      <form class="searchbox searchbox-lg" id="productSearchForm" role="search">
+        <svg class="ic search-ic"><use href="#i-search"/></svg>
+        <label class="sr-only" for="productSearch">Tìm sản phẩm</label>
+        <input id="productSearch" name="q" type="search" placeholder="Tìm theo tên, model, thương hiệu hoặc nhóm thiết bị..." autocomplete="off">
+        <button type="submit">Tìm kiếm</button>
+      </form>
+      <button class="btn btn-outline" data-open-rfq><svg class="ic"><use href="#i-file"/></svg>Gửi BOQ</button>
+    </div>
+    <div class="filter-chips" id="filterChips" role="toolbar" aria-label="Lọc theo nhóm"></div>
+    <p class="result-count" id="resultCount" aria-live="polite"></p>
+
+    <div id="productGrid" class="product-grid"></div>
+
+    <div class="center">
+      <button class="btn btn-outline" data-open-rfq>Không thấy sản phẩm phù hợp? Gửi yêu cầu <svg class="ic"><use href="#i-arrow"/></svg></button>
+    </div>
+  </div>
+</section>
+
+%%BOQ%%

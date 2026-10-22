@@ -9,12 +9,13 @@ const COMPANY_EMAIL = 'Phamgia.jsc2019@gmail.com';
 
 document.documentElement.classList.add('js');
 
-/* ---------- Danh mục sản phẩm tham khảo ---------- */
+/* ---------- Danh mục sản phẩm tham khảo ----------
+   featured: true  -> hiện ở mục "Thiết bị tiêu biểu" trên trang chủ */
 const products = [
-  { cat: 'Hàng hải', icon: 'bolt', name: 'Panasonic TX 400 – Máy hàn inverter', code: 'TX 400', desc: 'Thiết bị hàn công nghiệp cho xưởng đóng mới và sửa chữa tàu; cấu hình xác nhận theo yêu cầu.' },
-  { cat: 'Hàng hải', icon: 'paint', name: 'Sơn hàng hải & vật tư bảo trì tàu', code: 'MARINE', desc: 'Các dòng sơn chống hà, chống ăn mòn, sơn boong và vật tư phục vụ đóng mới, sửa chữa tàu.' },
+  { cat: 'Hàng hải', icon: 'bolt', featured: true, name: 'Panasonic TX 400 – Máy hàn inverter', code: 'TX 400', desc: 'Thiết bị hàn công nghiệp cho xưởng đóng mới và sửa chữa tàu; cấu hình xác nhận theo yêu cầu.' },
+  { cat: 'Hàng hải', icon: 'paint', featured: true, name: 'Sơn hàng hải & vật tư bảo trì tàu', code: 'MARINE', desc: 'Các dòng sơn chống hà, chống ăn mòn, sơn boong và vật tư phục vụ đóng mới, sửa chữa tàu.' },
   { cat: 'Hàng hải', icon: 'pump', name: 'Echo WP-8000 – Máy bơm nước', code: 'WP-8000', desc: 'Máy bơm nước di động; lựa chọn phụ kiện ống theo nhu cầu sử dụng.' },
-  { cat: 'Công nghiệp', icon: 'gear', name: 'Fini MK103-90-3M – Máy nén khí', code: 'MK103-90-3M', desc: 'Máy nén khí 3 HP, bình 90 L; dùng cho xưởng sản xuất và bảo trì.' },
+  { cat: 'Công nghiệp', icon: 'gear', featured: true, name: 'Fini MK103-90-3M – Máy nén khí', code: 'MK103-90-3M', desc: 'Máy nén khí 3 HP, bình 90 L; dùng cho xưởng sản xuất và bảo trì.' },
   { cat: 'Công nghiệp', icon: 'bolt', name: 'Máy phát điện công nghiệp', code: 'GENSET', desc: 'Máy phát điện dự phòng và di động; tư vấn công suất theo phụ tải thực tế.' },
   { cat: 'Công nghiệp', icon: 'lift', name: 'Thiết bị nâng – ép – kích thủy lực', code: 'HYDRAULIC', desc: 'Kích thủy lực, máy ép, thiết bị nâng cho xưởng cơ khí và sửa chữa ô tô.' },
   { cat: 'Công nghiệp', icon: 'tool', name: 'Makita DTW700 – Máy siết bu lông', code: 'DTW700', desc: 'Máy siết bu lông dùng pin; cấu hình bộ pin/sạc theo đơn hàng.' },
@@ -22,64 +23,81 @@ const products = [
   { cat: 'Công nghiệp', icon: 'pump', name: 'KUMISAI KMS12S – Bơm mỡ điện', code: 'KMS12S', desc: 'Bơm mỡ điện dung tích 12 L cho công tác bôi trơn, bảo dưỡng.' },
   { cat: 'PCCC', icon: 'fire', name: 'Thiết bị & phương tiện PCCC', code: 'PCCC', desc: 'Bình chữa cháy, vòi, lăng, tủ PCCC, báo cháy theo yêu cầu công trình và dự án.' },
   { cat: 'Cứu hộ', icon: 'life', name: 'Trang thiết bị cứu hộ – cứu nạn', code: 'RESCUE', desc: 'Thiết bị tìm kiếm, cứu hộ và ứng phó sự cố cho lực lượng chuyên trách.' },
-  { cat: 'UAV', icon: 'drone', name: 'UAV / Drone – Giải pháp ứng dụng', code: 'UAV', desc: 'Tư vấn cấu hình cho quan sát, khảo sát, giám sát, kiểm tra theo mục tiêu sử dụng.' },
+  { cat: 'UAV', icon: 'drone', featured: true, name: 'UAV / Drone – Giải pháp ứng dụng', code: 'UAV', desc: 'Tư vấn cấu hình cho quan sát, khảo sát, giám sát, kiểm tra theo mục tiêu sử dụng.' },
   { cat: 'Robot', icon: 'robot', name: 'Robot & Tự động hóa', code: 'ROBOT', desc: 'Kết nối công nghệ, tư vấn và chuyển giao giải pháp robot cho doanh nghiệp.' },
   { cat: 'Công nghệ', icon: 'chip', name: 'Thiết bị điện – điện tử – công nghệ', code: 'TECH', desc: 'Thiết bị điện, điện tử, máy tính và sản phẩm công nghệ cho văn phòng, nhà xưởng.' }
 ];
-const categories = ['Tất cả', ...new Set(products.map(p => p.cat))];
+
+/* Nhóm lọc trên trang Sản phẩm; slug dùng cho đường dẫn san-pham.html?nhom=... */
+const groups = [
+  { slug: '', label: 'Tất cả', cats: null },
+  { slug: 'hang-hai', label: 'Hàng hải', cats: ['Hàng hải'] },
+  { slug: 'cong-nghiep', label: 'Công nghiệp', cats: ['Công nghiệp'] },
+  { slug: 'pccc', label: 'PCCC & Cứu hộ', cats: ['PCCC', 'Cứu hộ'] },
+  { slug: 'uav', label: 'UAV – Robot – Công nghệ', cats: ['UAV', 'Robot', 'Công nghệ'] }
+];
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
 const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+const productCard = p => `
+  <article class="product">
+    <div class="product-top"><span class="product-code">${p.code}</span><svg class="ic-lg"><use href="#i-${p.icon}"/></svg></div>
+    <div class="product-body">
+      <div class="product-tag">${p.cat}</div>
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <div class="product-foot"><span class="price">Liên hệ báo giá</span><button type="button" data-open-rfq data-product="${esc(p.name)}">Yêu cầu báo giá</button></div>
+    </div>
+  </article>`;
+
+/* ---------- Trang chủ: thiết bị tiêu biểu ---------- */
+const featuredGrid = $('#featuredGrid');
+if (featuredGrid) featuredGrid.innerHTML = products.filter(p => p.featured).map(productCard).join('');
+
+/* ---------- Trang Sản phẩm: tìm kiếm & lọc ---------- */
 const grid = $('#productGrid');
-const chips = $('#filterChips');
-const productSearch = $('#productSearch');
-let activeCat = 'Tất cả';
+if (grid) {
+  const chips = $('#filterChips');
+  const search = $('#productSearch');
+  const count = $('#resultCount');
+  const params = new URLSearchParams(location.search);
+  let group = groups.find(g => g.slug === (params.get('nhom') || '')) || groups[0];
+  search.value = params.get('q') || '';
 
-chips.innerHTML = categories.map(c => `<button type="button" data-cat="${c}"${c === activeCat ? ' class="active"' : ''}>${c}</button>`).join('');
+  chips.innerHTML = groups.map(g => `<button type="button" data-slug="${g.slug}">${g.label}</button>`).join('');
 
-function renderProducts() {
-  const q = norm(productSearch.value.trim());
-  const list = products.filter(p =>
-    (activeCat === 'Tất cả' || p.cat === activeCat) &&
-    norm(`${p.name} ${p.cat} ${p.code} ${p.desc}`).includes(q));
-  grid.innerHTML = list.length
-    ? list.map(p => `
-      <article class="product">
-        <div class="product-top"><span class="product-code">${p.code}</span><svg class="ic-lg"><use href="#i-${p.icon}"/></svg></div>
-        <div class="product-body">
-          <div class="product-tag">${p.cat}</div>
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <div class="product-foot"><span class="price">Liên hệ báo giá</span><button type="button" data-open-rfq data-product="${esc(p.name)}">Yêu cầu báo giá</button></div>
-        </div>
-      </article>`).join('')
-    : `<div class="empty">Không tìm thấy “${esc(productSearch.value)}” trong danh mục tham khảo.<br>Hãy gửi yêu cầu hoặc BOQ – Phạm Gia Global sẽ tìm phương án phù hợp.<br><button class="btn btn-primary" data-open-rfq data-product="${esc(productSearch.value)}">Gửi yêu cầu tìm hàng</button></div>`;
+  const syncUrl = () => {
+    const p = new URLSearchParams();
+    if (group.slug) p.set('nhom', group.slug);
+    if (search.value.trim()) p.set('q', search.value.trim());
+    history.replaceState(null, '', p.toString() ? `?${p}` : location.pathname);
+  };
+
+  const render = () => {
+    $$('button', chips).forEach(b => b.classList.toggle('active', b.dataset.slug === group.slug));
+    const q = norm(search.value.trim());
+    const list = products.filter(p =>
+      (!group.cats || group.cats.includes(p.cat)) &&
+      norm(`${p.name} ${p.cat} ${p.code} ${p.desc}`).includes(q));
+    count.textContent = `${list.length} sản phẩm${group.cats ? ` trong nhóm ${group.label}` : ''}${q ? ` khớp “${search.value.trim()}”` : ''}`;
+    grid.innerHTML = list.length
+      ? list.map(productCard).join('')
+      : `<div class="empty">Không tìm thấy “${esc(search.value)}” trong danh mục tham khảo.<br>Hãy gửi yêu cầu hoặc BOQ – Phạm Gia Global sẽ tìm phương án phù hợp.<br><button class="btn btn-primary" data-open-rfq data-product="${esc(search.value)}">Gửi yêu cầu tìm hàng</button></div>`;
+  };
+
+  chips.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    group = groups.find(g => g.slug === b.dataset.slug);
+    render(); syncUrl();
+  });
+  search.addEventListener('input', () => { render(); syncUrl(); });
+  $('#productSearchForm').addEventListener('submit', e => { e.preventDefault(); render(); syncUrl(); });
+  render();
 }
-
-function setCategory(cat) {
-  activeCat = categories.includes(cat) ? cat : 'Tất cả';
-  $$('button', chips).forEach(b => b.classList.toggle('active', b.dataset.cat === activeCat));
-  renderProducts();
-}
-
-chips.addEventListener('click', e => { const b = e.target.closest('button'); if (b) setCategory(b.dataset.cat); });
-productSearch.addEventListener('input', renderProducts);
-$('#productSearchForm').addEventListener('submit', e => { e.preventDefault(); renderProducts(); });
-
-function searchFromHero(q) {
-  productSearch.value = q;
-  activeCat = 'Tất cả';
-  setCategory('Tất cả');
-  $('#products').scrollIntoView({ behavior: 'smooth' });
-}
-$('#heroSearchForm').addEventListener('submit', e => { e.preventDefault(); searchFromHero($('#heroSearch').value); });
-$$('.quick-tags button').forEach(b => b.addEventListener('click', () => { $('#heroSearch').value = b.textContent; searchFromHero(b.dataset.query); }));
-$$('[data-filter]').forEach(a => a.addEventListener('click', () => { productSearch.value = ''; setCategory(a.dataset.filter); }));
-
-renderProducts();
 
 /* ---------- Popup báo giá ---------- */
 const modal = $('#rfqModal');
@@ -143,17 +161,30 @@ $$('.lead-form').forEach(form => form.addEventListener('submit', async e => {
   }
 }));
 
-/* ---------- Menu & header ---------- */
+/* ---------- Menu ---------- */
 const nav = $('.nav');
 const toggle = $('#menuToggle');
-function closeMenu() { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = modal.classList.contains('open') ? 'hidden' : ''; }
+function closeMenu() {
+  nav.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = modal.classList.contains('open') ? 'hidden' : '';
+}
 toggle.addEventListener('click', () => {
+  /* Menu mobile bắt đầu ngay dưới header (topbar có thể đang hiện hoặc đã cuộn khuất) */
+  $('#navMenu').style.top = `${$('#siteHeader').getBoundingClientRect().bottom}px`;
   const open = nav.classList.toggle('open');
   toggle.setAttribute('aria-expanded', String(open));
   document.body.style.overflow = open ? 'hidden' : '';
 });
-$$('.nav-links a').forEach(a => a.addEventListener('click', closeMenu));
+/* Mobile: nút mũi tên mở/đóng menu con */
+$$('.dd-toggle').forEach(btn => btn.addEventListener('click', () => {
+  const li = btn.closest('.has-dd');
+  const open = li.classList.toggle('open');
+  btn.setAttribute('aria-expanded', String(open));
+}));
+$$('.nav-menu a').forEach(a => a.addEventListener('click', () => { closeMenu(); a.blur(); }));
 
+/* ---------- Header & nút lên đầu trang ---------- */
 const header = $('#siteHeader');
 const toTop = $('#toTop');
 const onScroll = () => {
@@ -164,17 +195,16 @@ addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 
-/* Đánh dấu mục menu theo vùng đang xem */
-const navMap = new Map($$('.nav-links a').map(a => [a.getAttribute('href').slice(1), a]));
-const spy = new IntersectionObserver(entries => entries.forEach(en => {
-  if (en.isIntersecting) navMap.forEach((a, id) => a.classList.toggle('active', id === en.target.id));
-}), { rootMargin: '-45% 0px -50% 0px' });
-navMap.forEach((_, id) => { const s = document.getElementById(id); if (s) spy.observe(s); });
-
 /* Hiệu ứng xuất hiện khi cuộn */
 const reveal = new IntersectionObserver(entries => entries.forEach(en => {
   if (en.isIntersecting) { en.target.classList.add('in'); reveal.unobserve(en.target); }
 }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
 $$('.reveal').forEach(el => reveal.observe(el));
+
+/* Mở từ trang khác với #mục (VD: linh-vuc.html#uav): đảm bảo cuộn đúng mục sau khi trang dựng xong */
+if (location.hash) {
+  const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (target) addEventListener('load', () => target.scrollIntoView({ behavior: 'auto' }));
+}
 
 $('#year').textContent = new Date().getFullYear();

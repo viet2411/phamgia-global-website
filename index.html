@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="vi">
+<!-- File được tạo tự động bởi _build/build.py. Sửa nội dung trong _build/ rồi chạy lại build. -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="Phạm Gia Global">
-  <meta property="og:title" content="Phạm Gia Global – Thiết bị, công nghệ và giải pháp kỹ thuật B2B">
-  <meta property="og:description" content="Một đầu mối cung ứng thiết bị cho doanh nghiệp: từ tư vấn, tìm nguồn, báo giá đến giao hàng, lắp đặt và hỗ trợ sau bán hàng.">
+  <meta property="og:title" content="Phạm Gia Global | Cung cấp thiết bị – Kết nối công nghệ – Giải pháp kỹ thuật B2B">
+  <meta property="og:description" content="Phạm Gia Global cung cấp máy móc, thiết bị công nghiệp, thiết bị đóng tàu – hàng hải, PCCC, UAV, robot và giải pháp kỹ thuật trọn gói cho doanh nghiệp. Nhận BOQ, báo giá nhanh, giao hàng toàn quốc.">
   <meta property="og:url" content="https://phamgiaglobal.com.vn/">
   <meta property="og:image" content="https://phamgiaglobal.com.vn/assets/og-image.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,9 +41,8 @@
   }
   </script>
 </head>
-<body>
+<body data-page="home">
 
-<!-- Bộ biểu tượng dùng chung -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 17l1.5 3h15l1.5-3"/><path d="M5 17V11l7-3 7 3v6"/><path d="M12 8V3"/><path d="M9 4h6"/></symbol>
@@ -71,6 +71,8 @@
     <symbol id="i-lift" viewBox="0 0 24 24"><path d="M4 21h16M7 21V10h10v11M7 14h10M12 10V3M9 6l3-3 3 3"/></symbol>
     <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M11 17l2 2a1.4 1.4 0 0 0 2-2"/><path d="M14 14l2.5 2.5a1.4 1.4 0 0 0 2-2l-3.9-3.9a2 2 0 0 0-2.8 0l-.9.9a1.4 1.4 0 0 1-2-2l2.8-2.8a3.7 3.7 0 0 1 4.8-.4L17 7h4v8"/><path d="M3 7h4l4.5 4.5M3 7v8h2l4 4a1.4 1.4 0 0 0 2-2"/></symbol>
     <symbol id="i-zalo" viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.8 2 11.5c0 2.6 1.4 4.9 3.6 6.5L5 21l3.5-1.8c1.1.3 2.3.5 3.5.5 5.5 0 10-3.8 10-8.5S17.5 3 12 3z"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
   </defs>
 </svg>
 
@@ -88,29 +90,78 @@
 
 <header class="site-header" id="siteHeader">
   <nav class="container nav" aria-label="Điều hướng chính">
-    <a class="brand" href="#home" aria-label="Phạm Gia Global – Trang chủ">
+    <a class="brand" href="index.html" aria-label="Phạm Gia Global – Trang chủ">
       <img src="assets/logo-mark.png" alt="" width="104" height="47">
       <span class="brand-text"><strong>PHẠM GIA</strong><small>GLOBAL</small></span>
     </a>
-    <div class="nav-links" id="navLinks">
-      <a href="#about">Giới thiệu</a>
-      <a href="#solutions">Giải pháp</a>
-      <a href="#industries">Lĩnh vực</a>
-      <a href="#products">Sản phẩm</a>
-      <a href="#projects">Dự án</a>
-      <a href="#process">Quy trình</a>
-      <a href="#contact">Liên hệ</a>
-      <button class="btn btn-primary nav-cta-mobile" data-open-rfq>Yêu cầu báo giá</button>
-    </div>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a class="nav-link" data-nav="home" aria-current="page" href="index.html">Trang chủ</a></li>
+
+      <li class="has-dd">
+        <a class="nav-link" data-nav="about" href="gioi-thieu.html">Giới thiệu<svg class="ic chev"><use href="#i-chev"/></svg></a>
+        <button class="dd-toggle" type="button" aria-expanded="false" aria-label="Mở mục Giới thiệu"><svg class="ic"><use href="#i-chev"/></svg></button>
+        <div class="dropdown">
+          <a href="gioi-thieu.html#tong-quan"><b>Tổng quan doanh nghiệp</b><span>Thông tin pháp lý, lịch sử hình thành</span></a>
+          <a href="gioi-thieu.html#tam-nhin"><b>Tầm nhìn &amp; sứ mệnh</b><span>Giá trị cốt lõi, 4 trụ cột hoạt động</span></a>
+          <a href="gioi-thieu.html#so-do-to-chuc"><b>Sơ đồ tổ chức</b><span>5 khối chức năng</span></a>
+          <a href="gioi-thieu.html#cam-ket"><b>Cam kết &amp; phương châm</b><span>6 cam kết với khách hàng</span></a>
+        </div>
+      </li>
+
+      <li class="has-dd">
+        <a class="nav-link" data-nav="sectors" href="linh-vuc.html">Lĩnh vực<svg class="ic chev"><use href="#i-chev"/></svg></a>
+        <button class="dd-toggle" type="button" aria-expanded="false" aria-label="Mở mục Lĩnh vực"><svg class="ic"><use href="#i-chev"/></svg></button>
+        <div class="dropdown dropdown-mega">
+          <a href="linh-vuc.html#dong-tau" class="dd-icon"><svg class="ic-lg"><use href="#i-ship"/></svg><span><b>Đóng tàu – Hàng hải</b><span>Lĩnh vực trọng tâm</span></span></a>
+          <a href="linh-vuc.html#cong-nghiep" class="dd-icon"><svg class="ic-lg"><use href="#i-gear"/></svg><span><b>Máy móc – Thiết bị công nghiệp</b><span>Cơ khí, điện, khí nén, bơm</span></span></a>
+          <a href="linh-vuc.html#pccc" class="dd-icon"><svg class="ic-lg"><use href="#i-fire"/></svg><span><b>Phòng cháy chữa cháy</b><span>Thiết bị và giải pháp PCCC</span></span></a>
+          <a href="linh-vuc.html#cuu-ho" class="dd-icon"><svg class="ic-lg"><use href="#i-life"/></svg><span><b>Cứu hộ – Cứu nạn</b><span>Ứng phó sự cố</span></span></a>
+          <a href="linh-vuc.html#uav" class="dd-icon"><svg class="ic-lg"><use href="#i-drone"/></svg><span><b>UAV – Drone</b><span>Khảo sát, giám sát, kiểm tra</span></span></a>
+          <a href="linh-vuc.html#robot" class="dd-icon"><svg class="ic-lg"><use href="#i-robot"/></svg><span><b>Robot &amp; Tự động hóa</b><span>Nâng cao hiệu quả, an toàn</span></span></a>
+          <a href="linh-vuc.html#ai" class="dd-icon"><svg class="ic-lg"><use href="#i-chip"/></svg><span><b>AI – Công nghệ số</b><span>Dữ liệu, giám sát, phân tích</span></span></a>
+          <a href="linh-vuc.html#dao-tao" class="dd-icon"><svg class="ic-lg"><use href="#i-edu"/></svg><span><b>Tư vấn – Đào tạo công nghệ</b><span>AI, UAV, Robot, STEM</span></span></a>
+        </div>
+      </li>
+
+      <li class="has-dd">
+        <a class="nav-link" data-nav="products" href="san-pham.html">Sản phẩm<svg class="ic chev"><use href="#i-chev"/></svg></a>
+        <button class="dd-toggle" type="button" aria-expanded="false" aria-label="Mở mục Sản phẩm"><svg class="ic"><use href="#i-chev"/></svg></button>
+        <div class="dropdown">
+          <a href="san-pham.html"><b>Tất cả sản phẩm</b><span>Danh mục tham khảo, tìm theo tên, model</span></a>
+          <a href="san-pham.html?nhom=hang-hai"><b>Thiết bị hàng hải</b><span>Hàn, sơn tàu, bơm</span></a>
+          <a href="san-pham.html?nhom=cong-nghiep"><b>Thiết bị công nghiệp</b><span>Nén khí, phát điện, thủy lực</span></a>
+          <a href="san-pham.html?nhom=pccc"><b>PCCC &amp; Cứu hộ</b><span>An toàn, ứng phó sự cố</span></a>
+          <a href="san-pham.html?nhom=uav"><b>UAV – Robot – Công nghệ</b><span>Giải pháp ứng dụng</span></a>
+        </div>
+      </li>
+
+      <li class="has-dd">
+        <a class="nav-link" data-nav="capability" href="nang-luc.html">Năng lực<svg class="ic chev"><use href="#i-chev"/></svg></a>
+        <button class="dd-toggle" type="button" aria-expanded="false" aria-label="Mở mục Năng lực"><svg class="ic"><use href="#i-chev"/></svg></button>
+        <div class="dropdown">
+          <a href="nang-luc.html#quy-trinh"><b>Quy trình 7 bước</b><span>Từ tiếp nhận đến hậu mãi</span></a>
+          <a href="nang-luc.html#phuong-thuc"><b>Phương thức cung cấp</b><span>Đơn lẻ, danh mục, gói, trọn gói</span></a>
+          <a href="nang-luc.html#ky-thuat"><b>Kỹ thuật – Lắp đặt</b><span>Khảo sát, chạy thử, bàn giao</span></a>
+          <a href="nang-luc.html#logistics"><b>Logistics – Giao nhận</b><span>Giao hàng toàn quốc</span></a>
+          <a href="nang-luc.html#chat-luong"><b>Quản lý chất lượng</b><span>Kiểm soát trước khi giao</span></a>
+        </div>
+      </li>
+
+      <li><a class="nav-link" data-nav="projects" href="du-an.html">Dự án</a></li>
+      <li><a class="nav-link" data-nav="contact" href="lien-he.html">Liên hệ</a></li>
+      <li class="nav-cta-mobile"><button class="btn btn-primary full" data-open-rfq>Yêu cầu báo giá</button></li>
+    </ul>
+
     <button class="btn btn-primary nav-cta" data-open-rfq>Yêu cầu báo giá</button>
-    <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
   </nav>
 </header>
 
 <main id="main">
 
 <!-- HERO -->
-<section class="hero" id="home">
+<section class="hero">
   <div class="hero-pattern" aria-hidden="true"></div>
   <div class="container hero-grid">
     <div class="hero-copy">
@@ -119,7 +170,7 @@
       <p class="hero-lead">Phạm Gia Global đồng hành cùng doanh nghiệp từ xác định nhu cầu, lựa chọn thiết bị, tìm nguồn hàng đến giao hàng, lắp đặt, bàn giao và hỗ trợ sau triển khai.</p>
       <div class="hero-actions">
         <button class="btn btn-primary btn-lg" data-open-rfq>Gửi yêu cầu báo giá <svg class="ic"><use href="#i-arrow"/></svg></button>
-        <a class="btn btn-ghost btn-lg" href="#solutions">Khám phá giải pháp</a>
+        <a class="btn btn-ghost btn-lg" href="linh-vuc.html">Khám phá giải pháp</a>
       </div>
       <ul class="trust-row">
         <li><svg class="ic"><use href="#i-check"/></svg>B2B Procurement</li>
@@ -135,17 +186,17 @@
       <div class="search-card">
         <div class="search-card-title"><svg class="ic"><use href="#i-search"/></svg>Bạn đang tìm thiết bị gì?</div>
         <p>Nhập tên thiết bị, mã sản phẩm, thông số hoặc nhu cầu dự án.</p>
-        <form class="searchbox" id="heroSearchForm" role="search">
+        <form class="searchbox" id="heroSearchForm" role="search" action="san-pham.html">
           <label class="sr-only" for="heroSearch">Tìm thiết bị</label>
-          <input id="heroSearch" type="search" placeholder="VD: máy hàn 400A, máy nén khí, UAV..." autocomplete="off">
+          <input id="heroSearch" name="q" type="search" placeholder="VD: máy hàn 400A, máy nén khí, UAV..." autocomplete="off">
           <button type="submit">Tìm</button>
         </form>
         <div class="quick-tags">
-          <button type="button" data-query="Hàn">Máy hàn</button>
-          <button type="button" data-query="nén khí">Máy nén khí</button>
-          <button type="button" data-query="PCCC">PCCC</button>
-          <button type="button" data-query="UAV">UAV</button>
-          <button type="button" data-query="Robot">Robot</button>
+          <a href="san-pham.html?q=h%C3%A0n">Máy hàn</a>
+          <a href="san-pham.html?q=n%C3%A9n%20kh%C3%AD">Máy nén khí</a>
+          <a href="san-pham.html?nhom=pccc">PCCC</a>
+          <a href="san-pham.html?q=UAV">UAV</a>
+          <a href="san-pham.html?q=Robot">Robot</a>
         </div>
         <button class="search-card-foot" data-open-rfq><span><strong>Không tìm thấy sản phẩm?</strong> Gửi BOQ / yêu cầu kỹ thuật</span><svg class="ic"><use href="#i-arrow"/></svg></button>
       </div>
@@ -163,8 +214,8 @@
   </div>
 </section>
 
-<!-- GIỚI THIỆU -->
-<section class="section" id="about">
+<!-- GIỚI THIỆU (tóm tắt) -->
+<section class="section">
   <div class="container about-grid">
     <div class="about-media reveal">
       <img class="about-cover" src="assets/ho-so-nang-luc.webp" alt="Hồ sơ năng lực Phạm Gia Global 2026" width="720" height="1080" loading="lazy">
@@ -176,43 +227,18 @@
     <div class="about-copy reveal">
       <span class="eyebrow">Về Phạm Gia Global</span>
       <h2>Đối tác cung ứng thiết bị và giải pháp kỹ thuật cho doanh nghiệp</h2>
-      <p>Công ty Cổ phần Đầu tư Thương mại và Công nghệ số Toàn cầu Phạm Gia được thành lập ngày 17/11/2022, phát triển theo mô hình <strong>đầu tư – thương mại – cung cấp thiết bị, máy móc, sản phẩm công nghệ và giải pháp B2B</strong>.</p>
-      <p>Chúng tôi kết nối nhu cầu của khách hàng với hệ thống sản phẩm, nhà sản xuất và đối tác cung ứng phù hợp; đồng thời tổ chức tư vấn, báo giá, cung ứng, vận chuyển, lắp đặt, bàn giao và hỗ trợ sau bán hàng. Trọng tâm đặc biệt là <strong>ngành đóng tàu, sửa chữa và bảo trì tàu</strong>.</p>
-
-      <div class="vm-grid">
-        <div class="vm-card">
-          <h3>Tầm nhìn</h3>
-          <p>Trở thành doanh nghiệp cung ứng thiết bị và giải pháp thương mại – kỹ thuật có năng lực đáp ứng linh hoạt nhu cầu của khách hàng doanh nghiệp tại Việt Nam.</p>
-        </div>
-        <div class="vm-card">
-          <h3>Sứ mệnh</h3>
-          <p>Cung cấp sản phẩm và giải pháp phù hợp với nhu cầu thực tế; tối ưu quá trình lựa chọn, mua sắm, giao nhận và đưa thiết bị vào sử dụng.</p>
-        </div>
-      </div>
-
+      <p>Thành lập ngày 17/11/2022, Phạm Gia Global phát triển theo mô hình <strong>đầu tư – thương mại – cung cấp thiết bị, máy móc, sản phẩm công nghệ và giải pháp B2B</strong>.</p>
+      <p>Chúng tôi kết nối nhu cầu của khách hàng với hệ thống sản phẩm, nhà sản xuất và đối tác cung ứng phù hợp, với trọng tâm đặc biệt là <strong>ngành đóng tàu, sửa chữa và bảo trì tàu</strong>.</p>
       <ul class="values">
         <li>Đúng yêu cầu</li><li>Đúng thông số</li><li>Đúng tiến độ</li><li>Rõ nguồn gốc</li><li>Minh bạch thương mại</li><li>Đồng hành sau bán hàng</li>
       </ul>
-
-      <dl class="facts">
-        <div><dt>Tên quốc tế</dt><dd>Pham Gia Global Digital Technology and Trading Investment JSC</dd></div>
-        <div><dt>Mã số doanh nghiệp</dt><dd>0110183412</dd></div>
-        <div><dt>Thành lập</dt><dd>17/11/2022</dd></div>
-        <div><dt>Trụ sở</dt><dd>Số 23 Nguyễn Ngọc Doãn, P. Kim Liên, Hà Nội</dd></div>
-      </dl>
+      <a class="btn btn-outline" href="gioi-thieu.html">Tìm hiểu về chúng tôi <svg class="ic"><use href="#i-arrow"/></svg></a>
     </div>
-  </div>
-
-  <div class="container pillars reveal">
-    <div class="pillar"><svg class="ic-lg"><use href="#i-layers"/></svg><h3>Đầu tư</h3><p>Nghiên cứu và phát triển cơ hội đầu tư trong thương mại, thiết bị và công nghệ.</p></div>
-    <div class="pillar"><svg class="ic-lg"><use href="#i-cart"/></svg><h3>Thương mại</h3><p>Tìm kiếm, cung ứng máy móc, thiết bị, sản phẩm công nghệ và hàng hóa chuyên ngành.</p></div>
-    <div class="pillar"><svg class="ic-lg"><use href="#i-chip"/></svg><h3>Công nghệ</h3><p>Ứng dụng và triển khai AI, UAV, robot, tự động hóa và công nghệ số.</p></div>
-    <div class="pillar"><svg class="ic-lg"><use href="#i-edu"/></svg><h3>Đào tạo</h3><p>Tư vấn, giáo dục, huấn luyện kỹ năng công nghệ gắn với nhu cầu thực tế.</p></div>
   </div>
 </section>
 
-<!-- GIẢI PHÁP / NĂNG LỰC CỐT LÕI -->
-<section class="section section-soft" id="solutions">
+<!-- NĂNG LỰC CỐT LÕI -->
+<section class="section section-soft">
   <div class="container">
     <div class="section-head reveal">
       <div>
@@ -221,7 +247,6 @@
       </div>
       <p>Từ sản phẩm đơn lẻ đến danh mục thiết bị theo BOQ và giải pháp triển khai trọn gói theo dự án.</p>
     </div>
-
     <div class="solution-grid">
       <article class="solution-card featured reveal">
         <span class="num">01</span>
@@ -249,21 +274,12 @@
         <p>Vận chuyển, lắp đặt, chạy thử, hướng dẫn vận hành, bàn giao và hỗ trợ sau triển khai.</p>
       </article>
     </div>
-
-    <div class="supply-modes reveal">
-      <h3>4 phương thức cung cấp</h3>
-      <div class="modes">
-        <div><b>Từng thiết bị</b><span>Mua sắm đơn lẻ hoặc thay thế thiết bị.</span></div>
-        <div><b>Theo danh mục</b><span>Nhiều chủng loại thiết bị trong cùng một đơn hàng.</span></div>
-        <div><b>Theo gói</b><span>Nhận danh mục, kiểm tra, tìm nguồn, báo giá và giao hàng.</span></div>
-        <div class="mode-hl"><b>Trọn gói</b><span>Thiết bị + vận chuyển + lắp đặt + chạy thử + bàn giao + bảo hành.</span></div>
-      </div>
-    </div>
+    <div class="center"><a class="btn btn-outline" href="nang-luc.html">Xem năng lực &amp; quy trình <svg class="ic"><use href="#i-arrow"/></svg></a></div>
   </div>
 </section>
 
 <!-- LĨNH VỰC -->
-<section class="section section-dark" id="industries">
+<section class="section section-dark">
   <div class="container">
     <div class="section-head light reveal">
       <div>
@@ -273,44 +289,44 @@
       <p>Đa ngành nhưng chuyên sâu theo từng nhóm nhu cầu – trọng tâm là đóng tàu, sửa chữa và bảo trì tàu.</p>
     </div>
     <div class="industry-grid">
-      <a href="#products" data-filter="Hàng hải" class="industry industry-feature reveal">
+      <a href="linh-vuc.html#dong-tau" class="industry industry-feature reveal">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-ship"/></svg></span>
         <b>01 · Trọng tâm</b>
         <h3>Đóng tàu – Hàng hải</h3>
         <p>Thiết bị cơ khí, hàn – cắt, nâng – thủy lực, điện, bảo trì, dụng cụ chuyên dụng và đặc biệt là các dòng sơn phục vụ đóng mới, sửa chữa, bảo trì và vận hành tàu.</p>
-        <span class="more">Xem thiết bị <svg class="ic"><use href="#i-arrow"/></svg></span>
+        <span class="more">Xem chi tiết <svg class="ic"><use href="#i-arrow"/></svg></span>
       </a>
-      <a href="#products" data-filter="Công nghiệp" class="industry reveal">
+      <a href="linh-vuc.html#cong-nghiep" class="industry reveal">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-gear"/></svg></span>
         <b>02</b><h3>Máy móc – Thiết bị công nghiệp</h3>
         <p>Cơ khí, điện, hàn, thủy lực, khí nén, bơm, phát điện, bảo trì, xây dựng.</p>
       </a>
-      <a href="#products" data-filter="PCCC" class="industry reveal">
+      <a href="linh-vuc.html#pccc" class="industry reveal">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-fire"/></svg></span>
         <b>03</b><h3>Phòng cháy chữa cháy</h3>
         <p>Thiết bị, phương tiện và giải pháp an toàn PCCC theo từng công trình.</p>
       </a>
-      <a href="#products" data-filter="Cứu hộ" class="industry reveal">
+      <a href="linh-vuc.html#cuu-ho" class="industry reveal">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-life"/></svg></span>
         <b>04</b><h3>Cứu hộ – Cứu nạn</h3>
         <p>Trang thiết bị tìm kiếm, cứu hộ, ứng phó sự cố cho lực lượng chuyên trách.</p>
       </a>
-      <a href="#products" data-filter="UAV" class="industry reveal">
+      <a href="linh-vuc.html#uav" class="industry reveal">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-drone"/></svg></span>
         <b>05</b><h3>UAV – Bay không người lái</h3>
         <p>Quan sát, khảo sát, giám sát, kiểm tra và thu thập dữ liệu chuyên ngành.</p>
       </a>
-      <a href="#products" data-filter="Robot" class="industry reveal">
+      <a href="linh-vuc.html#robot" class="industry reveal">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-robot"/></svg></span>
         <b>06</b><h3>Robot &amp; Tự động hóa</h3>
         <p>Nâng cao hiệu quả, độ chính xác và an toàn trong môi trường làm việc.</p>
       </a>
-      <a href="#contact" class="industry reveal">
+      <a href="linh-vuc.html#ai" class="industry reveal">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-chip"/></svg></span>
         <b>07</b><h3>AI – Công nghệ số</h3>
         <p>AI và dữ liệu cho quản lý, giám sát, phân tích và hỗ trợ vận hành.</p>
       </a>
-      <a href="#contact" class="industry reveal">
+      <a href="linh-vuc.html#dao-tao" class="industry reveal">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-edu"/></svg></span>
         <b>08</b><h3>Tư vấn – Đào tạo công nghệ</h3>
         <p>Đào tạo AI, UAV, robot, STEM và huấn luyện vận hành thiết bị.</p>
@@ -319,33 +335,18 @@
   </div>
 </section>
 
-<!-- SẢN PHẨM -->
-<section class="section" id="products">
+<!-- SẢN PHẨM NỔI BẬT -->
+<section class="section">
   <div class="container">
     <div class="section-head reveal">
       <div>
         <span class="eyebrow">Sản phẩm &amp; thiết bị</span>
-        <h2>Tìm đúng thiết bị – nhận báo giá nhanh</h2>
+        <h2>Thiết bị tiêu biểu</h2>
       </div>
-      <p>Danh mục tham khảo. Giá bán được xác nhận theo thời điểm, số lượng và điều kiện giao hàng.</p>
+      <p>Một số thiết bị trong danh mục tham khảo. Giá bán được xác nhận theo thời điểm, số lượng và điều kiện giao hàng.</p>
     </div>
-
-    <div class="product-toolbar reveal">
-      <form class="searchbox searchbox-lg" id="productSearchForm" role="search">
-        <svg class="ic search-ic"><use href="#i-search"/></svg>
-        <label class="sr-only" for="productSearch">Tìm sản phẩm</label>
-        <input id="productSearch" type="search" placeholder="Tìm theo tên, model, thương hiệu hoặc nhóm thiết bị..." autocomplete="off">
-        <button type="submit">Tìm kiếm</button>
-      </form>
-      <button class="btn btn-outline" data-open-rfq><svg class="ic"><use href="#i-file"/></svg>Gửi BOQ</button>
-    </div>
-    <div class="filter-chips" id="filterChips" role="toolbar" aria-label="Lọc theo nhóm"></div>
-
-    <div id="productGrid" class="product-grid" aria-live="polite"></div>
-
-    <div class="center">
-      <button class="btn btn-outline" data-open-rfq>Không thấy sản phẩm phù hợp? Gửi yêu cầu <svg class="ic"><use href="#i-arrow"/></svg></button>
-    </div>
+    <div id="featuredGrid" class="product-grid"></div>
+    <div class="center"><a class="btn btn-outline" href="san-pham.html"><svg class="ic"><use href="#i-grid"/></svg>Xem toàn bộ danh mục</a></div>
   </div>
 </section>
 
@@ -362,8 +363,8 @@
   </div>
 </section>
 
-<!-- DỰ ÁN -->
-<section class="section" id="projects">
+<!-- DỰ ÁN (tóm tắt) -->
+<section class="section">
   <div class="container">
     <div class="section-head reveal">
       <div>
@@ -372,54 +373,18 @@
       </div>
       <p>Phạm vi công việc, năng lực cung ứng và vai trò của Phạm Gia Global trong từng dự án.</p>
     </div>
-    <div class="project-layout">
-      <div class="project-image reveal">
-        <img src="assets/b2b-meeting.webp" alt="Làm việc cùng đối tác doanh nghiệp" width="1100" height="619" loading="lazy">
-        <div class="project-image-note">
-          <strong>Kết nối nguồn lực cho dự án</strong>
-          <span>Thương mại – kỹ thuật – công nghệ – logistics</span>
-        </div>
-      </div>
-      <div class="project-list">
-        <article class="project reveal">
-          <span class="project-num">01</span>
-          <div>
-            <div class="project-meta"><span>Phú Yên – Tuy Hòa</span><span>3 năm</span></div>
-            <h3>Thiết bị đảm bảo hậu cần – Trung đoàn 910 &amp; 915</h3>
-            <p>Cung cấp thiết bị đảm bảo dịch vụ hậu cần và trang bị hậu cần cho 02 trung đoàn thuộc BTL Quân chủng Phòng không – Không quân.</p>
-          </div>
-        </article>
-        <article class="project reveal">
-          <span class="project-num">02</span>
-          <div>
-            <div class="project-meta"><span>KCN An Ninh, Hoài Đức, Hà Nội</span><span>1 năm</span></div>
-            <h3>Robot – UAV – Công ty TNHH MTV Thanh Bình</h3>
-            <p>Tư vấn, kết nối giao thương, hợp tác, đầu tư và chuyển giao công nghệ Robot – UAV.</p>
-          </div>
-        </article>
-        <article class="project reveal">
-          <span class="project-num">03</span>
-          <div>
-            <div class="project-meta"><span>Nam Từ Liêm, Hà Nội</span><span>1 năm</span></div>
-            <h3>UAV – Robot – Công ty MAJ Việt Nam</h3>
-            <p>Kết nối, hợp tác, tư vấn chuyển giao công nghệ UAV và Robot.</p>
-          </div>
-        </article>
-        <article class="project reveal">
-          <span class="project-num">04</span>
-          <div>
-            <div class="project-meta"><span>G-Group Tower, Hà Nội</span><span>1 năm</span></div>
-            <h3>Robot – Công ty G-Group</h3>
-            <p>Kết nối, hợp tác và tư vấn chuyển giao công nghệ Robot.</p>
-          </div>
-        </article>
-      </div>
+    <div class="project-cards">
+      <a class="project-card reveal" href="du-an.html#du-an-01"><span class="project-num">01</span><h3>Thiết bị đảm bảo hậu cần – Trung đoàn 910 &amp; 915</h3><p>Phú Yên – Tuy Hòa · 3 năm</p></a>
+      <a class="project-card reveal" href="du-an.html#du-an-02"><span class="project-num">02</span><h3>Robot – UAV – Công ty TNHH MTV Thanh Bình</h3><p>Hoài Đức, Hà Nội · 1 năm</p></a>
+      <a class="project-card reveal" href="du-an.html#du-an-03"><span class="project-num">03</span><h3>UAV – Robot – Công ty MAJ Việt Nam</h3><p>Nam Từ Liêm, Hà Nội · 1 năm</p></a>
+      <a class="project-card reveal" href="du-an.html#du-an-04"><span class="project-num">04</span><h3>Robot – Công ty G-Group</h3><p>G-Group Tower, Hà Nội · 1 năm</p></a>
     </div>
+    <div class="center"><a class="btn btn-outline" href="du-an.html">Xem chi tiết dự án <svg class="ic"><use href="#i-arrow"/></svg></a></div>
   </div>
 </section>
 
-<!-- QUY TRÌNH & NĂNG LỰC -->
-<section class="section section-soft" id="process">
+<!-- QUY TRÌNH (tóm tắt) -->
+<section class="section section-soft">
   <div class="container">
     <div class="section-head reveal">
       <div>
@@ -437,56 +402,7 @@
       <li class="reveal"><b>06</b><h3>Bàn giao</h3><p>Lắp đặt, chạy thử, hoàn thiện hồ sơ bàn giao.</p></li>
       <li class="reveal"><b>07</b><h3>Hậu mãi</h3><p>Bảo hành, hỗ trợ kỹ thuật và phụ tùng.</p></li>
     </ol>
-
-    <div class="capability-grid">
-      <div class="cap-card reveal">
-        <svg class="ic-lg"><use href="#i-tool"/></svg>
-        <h3>Kỹ thuật – Lắp đặt</h3>
-        <ul><li>Khảo sát, kiểm tra điều kiện kỹ thuật</li><li>Lắp đặt, kiểm tra kết nối, chạy thử</li><li>Hướng dẫn vận hành, bàn giao</li><li>Bảo hành và hỗ trợ kỹ thuật</li></ul>
-      </div>
-      <div class="cap-card reveal">
-        <svg class="ic-lg"><use href="#i-truck"/></svg>
-        <h3>Logistics – Giao nhận</h3>
-        <ul><li>Kho/nhà cung cấp → công trình/nhà máy</li><li>Bốc dỡ, lắp đặt, nghiệm thu</li><li>Giao hàng tại Hà Nội và toàn quốc</li><li>Theo tiến độ hợp đồng</li></ul>
-      </div>
-      <div class="cap-card reveal">
-        <svg class="ic-lg"><use href="#i-shield"/></svg>
-        <h3>Quản lý chất lượng</h3>
-        <ul><li>Kiểm tra tên, model, thông số, số lượng</li><li>Xuất xứ, phụ kiện, tình trạng hàng</li><li>Tài liệu kỹ thuật, CO/CQ khi có yêu cầu</li><li>Điều kiện bảo hành rõ ràng</li></ul>
-      </div>
-    </div>
-
-    <div class="org reveal">
-      <div class="org-copy">
-        <span class="eyebrow">Cơ cấu tổ chức</span>
-        <h3>5 khối chức năng phối hợp xuyên suốt</h3>
-        <p>Kinh doanh – Mua hàng – Kỹ thuật – Tài chính &amp; Hành chính – Logistics &amp; Hỗ trợ khách hàng, dưới sự điều hành của Ban Giám đốc và Hội đồng Quản trị.</p>
-      </div>
-      <a class="org-img" href="assets/so-do-to-chuc.webp" target="_blank" rel="noopener" aria-label="Xem sơ đồ tổ chức kích thước lớn">
-        <img src="assets/so-do-to-chuc.webp" alt="Sơ đồ tổ chức Phạm Gia Global" width="1400" height="933" loading="lazy">
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CAM KẾT -->
-<section class="section" id="commitments">
-  <div class="container">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow">Cam kết với khách hàng</span>
-        <h2>Hiểu đúng nhu cầu – Thực hiện đúng cam kết</h2>
-      </div>
-      <p>Chất lượng dịch vụ B2B nằm ở khả năng phối hợp trong toàn bộ quá trình mua sắm và đưa thiết bị vào sử dụng.</p>
-    </div>
-    <div class="commit-grid">
-      <div class="reveal"><b>01</b><p>Tư vấn trên cơ sở nhu cầu và thông số thực tế.</p></div>
-      <div class="reveal"><b>02</b><p>Thông tin sản phẩm rõ ràng trước khi xác nhận đơn hàng.</p></div>
-      <div class="reveal"><b>03</b><p>Kiểm soát model, số lượng và tình trạng hàng trước khi giao.</p></div>
-      <div class="reveal"><b>04</b><p>Tuân thủ điều kiện giao hàng và lắp đặt đã thống nhất.</p></div>
-      <div class="reveal"><b>05</b><p>Phối hợp xử lý các vấn đề phát sinh trong quá trình thực hiện.</p></div>
-      <div class="reveal"><b>06</b><p>Bảo hành và hỗ trợ sau bán hàng theo hợp đồng và nhà sản xuất.</p></div>
-    </div>
+    <div class="center"><a class="btn btn-outline" href="nang-luc.html#quy-trinh">Chi tiết quy trình <svg class="ic"><use href="#i-arrow"/></svg></a></div>
   </div>
 </section>
 
@@ -505,39 +421,6 @@
   </div>
 </section>
 
-<!-- LIÊN HỆ -->
-<section class="section" id="contact">
-  <div class="container contact-grid">
-    <div class="contact-info reveal">
-      <span class="eyebrow">Liên hệ</span>
-      <h2>Công ty Cổ phần Đầu tư Thương mại và Công nghệ số Toàn cầu Phạm Gia</h2>
-      <ul class="contact-list">
-        <li><span class="ci"><svg class="ic"><use href="#i-pin"/></svg></span><div><small>Trụ sở</small>Số 23 Nguyễn Ngọc Doãn, Phường Kim Liên, TP Hà Nội, Việt Nam</div></li>
-        <li><span class="ci"><svg class="ic"><use href="#i-phone"/></svg></span><div><small>Điện thoại / Zalo</small><a href="tel:0984041978">098 404 1978</a></div></li>
-        <li><span class="ci"><svg class="ic"><use href="#i-mail"/></svg></span><div><small>Email</small><a href="mailto:Phamgia.jsc2019@gmail.com">Phamgia.jsc2019@gmail.com</a></div></li>
-        <li><span class="ci"><svg class="ic"><use href="#i-file"/></svg></span><div><small>Mã số doanh nghiệp</small>0110183412</div></li>
-      </ul>
-      <div class="map">
-        <iframe title="Bản đồ trụ sở Phạm Gia Global" src="https://maps.google.com/maps?q=23%20Nguy%E1%BB%85n%20Ng%E1%BB%8Dc%20Do%C3%A3n%2C%20Kim%20Li%C3%AAn%2C%20H%C3%A0%20N%E1%BB%99i&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-
-    <div class="contact-card reveal">
-      <h3>Gửi yêu cầu nhanh</h3>
-      <p>Chúng tôi sẽ phản hồi trong giờ làm việc.</p>
-      <form class="lead-form" id="quickForm" data-form-name="Yêu cầu nhanh">
-        <div class="field"><label for="q-company">Tên doanh nghiệp *</label><input id="q-company" name="company" required></div>
-        <div class="field"><label for="q-contact">Người liên hệ *</label><input id="q-contact" name="contact" required></div>
-        <div class="field"><label for="q-phone">Số điện thoại / Email *</label><input id="q-phone" name="phone" required></div>
-        <div class="field"><label for="q-need">Bạn cần thiết bị hoặc giải pháp gì?</label><textarea id="q-need" name="need" rows="4"></textarea></div>
-        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-primary full" type="submit">Gửi yêu cầu</button>
-        <div class="form-status" role="status"></div>
-      </form>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <footer class="site-footer">
@@ -549,24 +432,26 @@
     </div>
     <div>
       <b>Lĩnh vực</b>
-      <a href="#industries">Đóng tàu – Hàng hải</a>
-      <a href="#industries">Thiết bị công nghiệp</a>
-      <a href="#industries">PCCC – Cứu hộ</a>
-      <a href="#industries">UAV / Robot / AI</a>
-      <a href="#industries">Đào tạo công nghệ</a>
+      <a href="linh-vuc.html#dong-tau">Đóng tàu – Hàng hải</a>
+      <a href="linh-vuc.html#cong-nghiep">Thiết bị công nghiệp</a>
+      <a href="linh-vuc.html#pccc">PCCC – Cứu hộ</a>
+      <a href="linh-vuc.html#uav">UAV / Robot / AI</a>
+      <a href="linh-vuc.html#dao-tao">Đào tạo công nghệ</a>
     </div>
     <div>
-      <b>B2B Sales</b>
-      <a href="#products">Tìm sản phẩm</a>
-      <button data-open-rfq>Yêu cầu báo giá</button>
-      <button data-open-rfq>Gửi BOQ</button>
-      <a href="#projects">Dự án tiêu biểu</a>
+      <b>Công ty</b>
+      <a href="gioi-thieu.html">Giới thiệu</a>
+      <a href="nang-luc.html">Năng lực</a>
+      <a href="du-an.html">Dự án tiêu biểu</a>
+      <a href="san-pham.html">Sản phẩm</a>
+      <button data-open-rfq>Yêu cầu báo giá / BOQ</button>
     </div>
     <div>
       <b>Liên hệ</b>
       <span>Số 23 Nguyễn Ngọc Doãn, P. Kim Liên, Hà Nội</span>
       <a href="tel:0984041978">098 404 1978</a>
       <a href="mailto:Phamgia.jsc2019@gmail.com">Phamgia.jsc2019@gmail.com</a>
+      <a href="lien-he.html">Bản đồ &amp; form liên hệ →</a>
     </div>
   </div>
   <div class="container copyright">
