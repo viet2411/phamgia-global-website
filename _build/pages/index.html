@@ -8,6 +8,7 @@ schema: yes
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true"><img src="assets/ud-kho-than-tau.webp" alt="" width="1600" height="1065" fetchpriority="high"></div>
   <div class="hero-pattern" aria-hidden="true"></div>
   <div class="container hero-grid">
     <div class="hero-copy">
@@ -26,9 +27,13 @@ schema: yes
     </div>
 
     <div class="hero-visual">
-      <div class="hero-image">
-        <img src="assets/industry-strip.webp" alt="Máy móc, thiết bị công nghiệp, kho vận và công trình" width="825" height="270">
-      </div>
+      <figure class="hero-image tint">
+        <img src="assets/han-cat-day-tau.webp" alt="Tia lửa hàn cắt dưới đáy tàu trong xưởng" width="1600" height="1065">
+      </figure>
+      <figure class="hero-image-2 tint" aria-hidden="true">
+        <img src="assets/son-than-tau.webp" alt="" width="1600" height="1039">
+      </figure>
+      <div class="hero-chip"><svg class="ic"><use href="#i-ship"/></svg><span><b>Trọng tâm</b>Đóng tàu – Hàng hải</span></div>
       <div class="search-card">
         <div class="search-card-title"><svg class="ic"><use href="#i-search"/></svg>Bạn đang tìm thiết bị gì?</div>
         <p>Nhập tên thiết bị, mã sản phẩm, thông số hoặc nhu cầu dự án.</p>
@@ -64,6 +69,7 @@ schema: yes
 <section class="section">
   <div class="container about-grid">
     <div class="about-media reveal">
+      <figure class="about-back tint" aria-hidden="true"><img src="assets/cang-hai-phong-xua.webp" alt="" width="1600" height="1068" loading="lazy"></figure>
       <img class="about-cover" src="assets/ho-so-nang-luc.webp" alt="Hồ sơ năng lực Phạm Gia Global 2026" width="720" height="1080" loading="lazy">
       <div class="about-badge">
         <strong>Kết nối giá trị</strong>
@@ -125,7 +131,7 @@ schema: yes
 </section>
 
 <!-- LĨNH VỰC -->
-<section class="section section-dark">
+<section class="section section-dark section-photo" style="--bg:url('assets/cang-chua-ve.webp')">
   <div class="container">
     <div class="section-head light reveal">
       <div>
@@ -135,44 +141,44 @@ schema: yes
       <p>Đa ngành nhưng chuyên sâu theo từng nhóm nhu cầu – trọng tâm là đóng tàu, sửa chữa và bảo trì tàu.</p>
     </div>
     <div class="industry-grid">
-      <a href="linh-vuc.html#dong-tau" class="industry industry-feature reveal">
+      <a href="linh-vuc.html#dong-tau" class="industry industry-feature reveal" style="--bg:url('assets/tho-han-day-tau.webp')">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-ship"/></svg></span>
         <b>01 · Trọng tâm</b>
         <h3>Đóng tàu – Hàng hải</h3>
         <p>Thiết bị cơ khí, hàn – cắt, nâng – thủy lực, điện, bảo trì, dụng cụ chuyên dụng và đặc biệt là các dòng sơn phục vụ đóng mới, sửa chữa, bảo trì và vận hành tàu.</p>
         <span class="more">Xem chi tiết <svg class="ic"><use href="#i-arrow"/></svg></span>
       </a>
-      <a href="linh-vuc.html#cong-nghiep" class="industry reveal">
+      <a href="linh-vuc.html#cong-nghiep" class="industry reveal" style="--bg:url('assets/may-nen-khi-xuong.webp')">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-gear"/></svg></span>
         <b>02</b><h3>Máy móc – Thiết bị công nghiệp</h3>
         <p>Cơ khí, điện, hàn, thủy lực, khí nén, bơm, phát điện, bảo trì, xây dựng.</p>
       </a>
-      <a href="linh-vuc.html#pccc" class="industry reveal">
+      <a href="linh-vuc.html#pccc" class="industry reveal" style="--bg:url('assets/binh-chua-chay.webp')">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-fire"/></svg></span>
         <b>03</b><h3>Phòng cháy chữa cháy</h3>
         <p>Thiết bị, phương tiện và giải pháp an toàn PCCC theo từng công trình.</p>
       </a>
-      <a href="linh-vuc.html#cuu-ho" class="industry reveal">
+      <a href="linh-vuc.html#cuu-ho" class="industry reveal" style="--bg:url('assets/cuu-nan-tren-bien.webp')">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-life"/></svg></span>
         <b>04</b><h3>Cứu hộ – Cứu nạn</h3>
         <p>Trang thiết bị tìm kiếm, cứu hộ, ứng phó sự cố cho lực lượng chuyên trách.</p>
       </a>
-      <a href="linh-vuc.html#uav" class="industry reveal">
+      <a href="linh-vuc.html#uav" class="industry reveal" style="--bg:url('assets/uav-bay-thu.webp')">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-drone"/></svg></span>
         <b>05</b><h3>UAV – Bay không người lái</h3>
         <p>Quan sát, khảo sát, giám sát, kiểm tra và thu thập dữ liệu chuyên ngành.</p>
       </a>
-      <a href="linh-vuc.html#robot" class="industry reveal">
+      <a href="linh-vuc.html#robot" class="industry reveal" style="--bg:url('assets/robot-han.webp')">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-robot"/></svg></span>
         <b>06</b><h3>Robot &amp; Tự động hóa</h3>
         <p>Nâng cao hiệu quả, độ chính xác và an toàn trong môi trường làm việc.</p>
       </a>
-      <a href="linh-vuc.html#ai" class="industry reveal">
+      <a href="linh-vuc.html#ai" class="industry reveal" style="--bg:url('assets/tu-dien-dieu-khien.webp')">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-chip"/></svg></span>
         <b>07</b><h3>AI – Công nghệ số</h3>
         <p>AI và dữ liệu cho quản lý, giám sát, phân tích và hỗ trợ vận hành.</p>
       </a>
-      <a href="linh-vuc.html#dao-tao" class="industry reveal">
+      <a href="linh-vuc.html#dao-tao" class="industry reveal" style="--bg:url('assets/dao-tao-uav.webp')">
         <span class="industry-icon"><svg class="ic-lg"><use href="#i-edu"/></svg></span>
         <b>08</b><h3>Tư vấn – Đào tạo công nghệ</h3>
         <p>Đào tạo AI, UAV, robot, STEM và huấn luyện vận hành thiết bị.</p>

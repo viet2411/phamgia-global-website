@@ -9,8 +9,10 @@ Cách dùng (chạy ở thư mục gốc website):
 
 Không sửa trực tiếp các file .html ở thư mục gốc: lần build sau sẽ ghi đè.
 """
+import json
 import re
 import sys
+from html import escape
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -40,6 +42,19 @@ def parse_page(path):
     return meta, text[m.end():]
 
 
+def credits_list():
+    """Danh sách nguồn ảnh cho footer, đọc từ assets/credits.json."""
+    path = ROOT / "assets" / "credits.json"
+    if not path.exists():
+        return ""
+    items = json.loads(path.read_text(encoding="utf-8"))
+    return "\n".join(
+        f'      <li><a href="{escape(c["page"])}" rel="noopener">{escape(c["title"])}</a> – '
+        f'{escape(c["creator"])}, {escape(c["license"])}</li>'
+        for c in items
+    )
+
+
 def build_page(path):
     meta, body = parse_page(path)
     for key in ("BOQ", "PROCESS", "CTA"):
@@ -58,7 +73,7 @@ def build_page(path):
         partial("sprite"), "\n",
         header, "\n",
         body.strip(), "\n\n",
-        partial("footer"),
+        partial("footer").replace("%%CREDITS%%", credits_list()),
         partial("modal"),
         '<script src="script.js"></script>\n</body>\n</html>\n',
     ])

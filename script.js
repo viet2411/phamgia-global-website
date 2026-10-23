@@ -199,7 +199,12 @@ toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
 const reveal = new IntersectionObserver(entries => entries.forEach(en => {
   if (en.isIntersecting) { en.target.classList.add('in'); reveal.unobserve(en.target); }
 }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
-$$('.reveal').forEach(el => reveal.observe(el));
+/* Các thẻ cùng một nhóm hiện lần lượt, cách nhau 80ms */
+$$('.reveal').forEach(el => {
+  const i = [...el.parentElement.children].filter(c => c.classList.contains('reveal')).indexOf(el);
+  el.style.transitionDelay = `${Math.min(i, 6) * 80}ms`;
+  reveal.observe(el);
+});
 
 /* Mở từ trang khác với #mục (VD: linh-vuc.html#uav): đảm bảo cuộn đúng mục sau khi trang dựng xong */
 if (location.hash) {
