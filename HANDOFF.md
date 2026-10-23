@@ -6,7 +6,7 @@
 
 Làm website giới thiệu công ty để thay web WordPress cũ (đã hết hạn hosting tại iNET), giữ tên miền và email, đưa web tĩnh lên **OneSite Free** của iNET qua kết nối GitHub.
 
-- Repo: https://github.com/viet2411/phamgia-global-website (public, nhánh `main`)
+- Repo: https://github.com/viet2411/phamgia-global-website (public). Nhánh `main`: mã nguồn. Nhánh `site`: web đã build, **đây là link nhập vào OneSite: https://github.com/viet2411/phamgia-global-website/tree/site**
 - Thư mục trên máy cũ: `F:\Research\PHAMGIA\website`
 - Tài liệu gốc (nằm ngoài repo, trên máy cũ, trong `F:\Research\PHAMGIA\`): `boi_canh_website_cong_ty.md`, `HSNL PHẠM GIA.docx` (hồ sơ năng lực), `logo.jpg`, `sơ đồ tổ chức.jpg`, `hồ sơ năng lực.jpg`, bản prototype cũ `PHAM_GIA_GLOBAL_B2B_WEBSITE_2026/`.
 
@@ -44,7 +44,10 @@ Tính năng: popup “Yêu cầu báo giá” (RFQ/BOQ) mở từ mọi nút, n�
 
 ### Cấu trúc và cách sửa
 
-- **Thư mục đăng lên hosting là `public/`.** Khi kết nối OneSite (hoặc Netlify/Cloudflare Pages) phải chọn thư mục xuất bản là `public`. Nếu OneSite không cho chọn thư mục con: dùng GitHub Action đẩy nội dung `public/` sang một nhánh riêng (vd. `site`) rồi kết nối OneSite với nhánh đó.
+- **Web đăng lên hosting là nội dung `public/`.** OneSite khi nhập từ Git URL chỉ lấy file tĩnh ở gốc nhánh, không chạy build, không cho chọn thư mục con (ZIP tải từ GitHub cũng bị bọc thêm một thư mục ngoài). Vì vậy:
+  - Nhánh `site` chỉ chứa nội dung `public/` (`index.html` ngay gốc; không có `_build/`, README, HANDOFF, file .py). Link nhập vào OneSite: **https://github.com/viet2411/phamgia-global-website/tree/site**
+  - GitHub Action `.github/workflows/publish-site.yml`: mỗi lần push lên `main` chạy `python _build/build.py`, `python _build/check.py` (lỗi thì dừng, `site` giữ bản cũ), rồi `.github/scripts/publish-site.sh` chép `public/` sang `site`. Không sửa tay nhánh `site`.
+  - Netlify/Cloudflare Pages (dự phòng): nhánh `main` + thư mục xuất bản `public`, hoặc nhánh `site` + thư mục gốc.
 - **Các file `.html`, `sitemap.xml`, `robots.txt` trong `public/` được tạo tự động – không sửa trực tiếp.** Sửa trong `_build/pages/` (nội dung từng trang) hoặc `_build/partials/` (header/menu, footer, popup, CTA, BOQ, quy trình, icon), rồi chạy:
   ```bash
   python _build/build.py
@@ -88,7 +91,7 @@ Tính năng: popup “Yêu cầu báo giá” (RFQ/BOQ) mở từ mọi nút, n�
    - Danh mục sản phẩm trong `script.js` (một số nhóm là mẫu: sơn hàng hải, PCCC, máy phát điện…; giá và tồn kho chưa có).
    - Ảnh thật của công ty, nếu có.
 3. Đăng ký Formspree bằng email công ty, gửi link `https://formspree.io/f/...`.
-4. Kích hoạt OneSite Free, kết nối repo này, gắn tên miền.
+4. Kích hoạt OneSite Free, nhập Git URL **https://github.com/viet2411/phamgia-global-website/tree/site** (nhánh `site`, không phải `main`), gắn tên miền. Hỏi iNET: OneSite tự đồng bộ khi nhánh `site` thay đổi hay phải bấm cập nhật tay.
 
 ### Việc kỹ thuật có thể làm ngay
 

@@ -1,0 +1,36 @@
+# Mỗi lần push lên main: build, kiểm tra, rồi đẩy nội dung public/ lên nhánh `site` cho OneSite.
+name: Cập nhật nhánh site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-site
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build
+        run: python _build/build.py
+
+      - name: Kiểm tra (lỗi thì dừng, không cập nhật nhánh site)
+        run: python _build/check.py
+
+      - name: Đẩy public/ lên nhánh site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          bash .github/scripts/publish-site.sh

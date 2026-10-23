@@ -2,7 +2,21 @@
 
 Website giới thiệu công ty **Công ty Cổ phần Đầu tư Thương mại và Công nghệ số Toàn cầu Phạm Gia** (Phạm Gia Global).
 
-Web tĩnh (HTML/CSS/JS thuần). **Thư mục đăng lên hosting là `public/`** (OneSite, Netlify, Cloudflare Pages: chọn thư mục xuất bản / publish directory là `public`).
+Web tĩnh (HTML/CSS/JS thuần). Mã nguồn ở nhánh `main`; bản web đã build nằm ở nhánh **`site`** (nội dung `public/`, `index.html` ngay gốc nhánh).
+
+## Đăng lên OneSite (iNET)
+
+Link nhập vào OneSite (nhập từ Git URL):
+
+```
+https://github.com/viet2411/phamgia-global-website/tree/site
+```
+
+OneSite chỉ lấy file tĩnh ở gốc nhánh, không chạy build, không chọn được thư mục con, nên **không dùng nhánh `main`** cho OneSite.
+
+Nhánh `site` được GitHub Action (`.github/workflows/publish-site.yml`) cập nhật tự động mỗi lần push lên `main`: build → kiểm tra (`_build/check.py`, có lỗi thì dừng, nhánh `site` giữ bản cũ) → chép nội dung `public/` sang nhánh `site`. Không sửa tay nhánh `site`. Xem kết quả ở tab **Actions** trên GitHub; có thể bấm chạy lại bằng tay (*Run workflow*).
+
+Netlify / Cloudflare Pages: dùng nhánh `main`, thư mục xuất bản `public` (hoặc nhánh `site`, thư mục gốc).
 
 ## Các trang
 
@@ -30,6 +44,8 @@ Web tĩnh (HTML/CSS/JS thuần). **Thư mục đăng lên hosting là `public/`*
 | `_build/build.py` | Script ghép trang, sinh `sitemap.xml` và `robots.txt`; dòng `SITE = ...` là tên miền |
 | `_build/check.py` | Kiểm tra link hỏng, #mục, title/description, h1, alt ảnh, sitemap |
 | `_build/credits.json` | Nguồn ảnh minh họa, in ra footer |
+| `.github/workflows/publish-site.yml` | Push lên `main` → build, kiểm tra, cập nhật nhánh `site` |
+| `.github/scripts/publish-site.sh` | Chép nội dung `public/` lên nhánh `site` (Action gọi; cũng chạy tay được) |
 
 ## Sửa nội dung
 
@@ -41,7 +57,7 @@ Web tĩnh (HTML/CSS/JS thuần). **Thư mục đăng lên hosting là `public/`*
    python _build/check.py
    ```
 
-3. Xem thử, rồi commit và push.
+3. Xem thử, rồi commit và push lên `main`. Khoảng 1 phút sau nhánh `site` tự cập nhật; OneSite lấy bản mới theo cơ chế đồng bộ của OneSite.
 
 ## Xem thử trên máy
 
