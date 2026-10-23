@@ -44,20 +44,25 @@ Tính năng: popup “Yêu cầu báo giá” (RFQ/BOQ) mở từ mọi nút, n�
 
 ### Cấu trúc và cách sửa
 
-- **Các file `.html` ở gốc được tạo tự động – không sửa trực tiếp.** Sửa trong `_build/pages/` (nội dung từng trang) hoặc `_build/partials/` (header/menu, footer, popup, CTA, BOQ, quy trình, icon), rồi chạy:
+- **Thư mục đăng lên hosting là `public/`.** Khi kết nối OneSite (hoặc Netlify/Cloudflare Pages) phải chọn thư mục xuất bản là `public`. Nếu OneSite không cho chọn thư mục con: dùng GitHub Action đẩy nội dung `public/` sang một nhánh riêng (vd. `site`) rồi kết nối OneSite với nhánh đó.
+- **Các file `.html`, `sitemap.xml`, `robots.txt` trong `public/` được tạo tự động – không sửa trực tiếp.** Sửa trong `_build/pages/` (nội dung từng trang) hoặc `_build/partials/` (header/menu, footer, popup, CTA, BOQ, quy trình, icon), rồi chạy:
   ```bash
   python _build/build.py
+  python _build/check.py
   ```
-- `_build/build.py` còn tự sinh danh sách nguồn ảnh ở footer từ `assets/credits.json`.
-- `script.js`: đầu file có `FORM_ENDPOINT` (Formspree) và mảng `products` (danh mục sản phẩm).
-- `style.css`: toàn bộ giao diện; khối “Chiều sâu” gần cuối file chứa phần ảnh nền, lớp chồng, bóng đổ.
-- Xem thử trên máy: `python -m http.server 5173` trong thư mục repo rồi mở http://localhost:5173.
+- `_build/build.py`: dòng `SITE = "https://phamgiaglobal.com.vn"` là tên miền (dùng cho canonical, og, schema, sitemap, robots). Còn tự sinh danh sách nguồn ảnh ở footer từ `_build/credits.json`.
+- `_build/check.py`: kiểm tra link hỏng, #mục không tồn tại, title/description, số thẻ h1, alt ảnh, sitemap. Chạy sau mỗi lần build.
+- `404.html`: dùng đường dẫn tuyệt đối (`/style.css`...) để hiển thị đúng ở mọi địa chỉ sai; có `noindex`, không vào sitemap.
+- `public/script.js`: đầu file có `FORM_ENDPOINT` (Formspree) và mảng `products` (danh mục sản phẩm).
+- `public/style.css`: toàn bộ giao diện; khối “Chiều sâu” gần cuối file chứa phần ảnh nền, lớp chồng, bóng đổ.
+- Xem thử trên máy: `python -m http.server 5173 -d public` rồi mở http://localhost:5173.
+- Hiệu năng (Lighthouse 23/10/2026, máy local): mọi trang 95–100 điểm hiệu năng mobile, 100 khả năng truy cập / best practices / SEO (404 cố ý noindex), CLS ≈ 0. Đã làm: font Google tải không chặn hiển thị + font dự phòng chỉnh số đo (`size-adjust`) chống xô chữ; ảnh hero có `srcset` bản 800px; ảnh nền CSS (`.section-photo`, `.industry`) chỉ tải khi cuộn gần tới; logo đổi sang `logo-mark.webp` (78KB → 18KB); ảnh chia sẻ `og-image.jpg` 1200×630 (JPG cho Zalo/Facebook).
 
 ### Ảnh
 
-- 14 ảnh minh họa ngành lấy từ Wikimedia Commons (public domain, CC0, CC BY, CC BY-SA), đã chuyển đen trắng và nén WebP, phủ màu navy bằng CSS. **Bắt buộc giữ phần “Nguồn ảnh minh họa” ở footer** (giấy phép CC BY/BY-SA yêu cầu ghi nguồn). Danh sách đầy đủ trong `assets/credits.json`.
+- 14 ảnh minh họa ngành lấy từ Wikimedia Commons (public domain, CC0, CC BY, CC BY-SA), đã chuyển đen trắng và nén WebP, phủ màu navy bằng CSS. **Bắt buộc giữ phần “Nguồn ảnh minh họa” ở footer** (giấy phép CC BY/BY-SA yêu cầu ghi nguồn). Danh sách đầy đủ trong `_build/credits.json`.
 - Đây là ảnh minh họa ngành, **không phải ảnh công trình của Phạm Gia**. Khi công ty có ảnh thật, nên thay vào (nhất là hero và trang Dự án).
-- Ảnh của công ty: `logo-mark.png`, `logo-full.webp`, `favicon.png`, `ho-so-nang-luc.webp` (bìa hồ sơ), `so-do-to-chuc.webp`, `og-image.webp`.
+- Ảnh của công ty (trong `public/assets/`): `logo-mark.webp`, `logo-full.webp`, `favicon.png`, `ho-so-nang-luc.webp` (bìa hồ sơ), `so-do-to-chuc.webp`, `og-image.jpg`.
 
 ### Nhánh git
 
@@ -87,10 +92,10 @@ Tính năng: popup “Yêu cầu báo giá” (RFQ/BOQ) mở từ mọi nút, n�
 
 ### Việc kỹ thuật có thể làm ngay
 
-- Gắn Formspree: dán link vào `FORM_ENDPOINT` trong `script.js`, gửi thử cả popup lẫn form trang Liên hệ.
-- Tạo `sitemap.xml` và `robots.txt`; sau khi web chạy thì đăng ký Google Search Console, gửi sitemap.
-- Cân nhắc tách phần web ra thư mục riêng (vd. `public/`) để OneSite không đăng kèm `_build/`, `README.md`, `HANDOFF.md` (không có gì nhạy cảm, chỉ là cho gọn).
-- Nếu tên miền khác `phamgiaglobal.com.vn`: sửa `_build/partials/head.html` (canonical, og:url, og:image) và `_build/partials/schema.html`, rồi build lại.
+- Gắn Formspree: dán link vào `FORM_ENDPOINT` trong `public/script.js`, gửi thử cả popup lẫn form trang Liên hệ.
+- ~~Tạo `sitemap.xml`, `robots.txt`, trang 404, tách web ra `public/`, kiểm tra Lighthouse~~ – đã xong 23/10/2026. Sau khi web chạy: đăng ký Google Search Console, gửi `sitemap.xml`; kiểm tra hosting có tự trả `404.html` cho đường dẫn sai không.
+- Chuyển hướng link cũ của WordPress (chưa làm): xem OneSite có cấu hình redirect không.
+- Nếu tên miền khác `phamgiaglobal.com.vn`: sửa `SITE` trong `_build/build.py`, rồi build lại.
 - Sau khi lên tên miền thật: kiểm tra HTTPS, form, và email công ty vẫn gửi/nhận bình thường.
 - Tùy chọn: Google Analytics.
 

@@ -1,6 +1,9 @@
 /* =========================================================
    Phạm Gia Global – giao diện website công ty
    ========================================================= */
+/* Font dự phòng có số đo chỉnh theo Be Vietnam Pro: khi font web tải xong, chữ không bị xô lệch bố cục (CLS) */
+@font-face { font-family: "Be Vietnam Pro Fallback"; font-weight: 100 500; src: local("Arial"), local("ArialMT"), local("Arimo"), local("Liberation Sans"); size-adjust: 107.63%; ascent-override: 92.91%; descent-override: 24.62%; line-gap-override: 0%; }
+@font-face { font-family: "Be Vietnam Pro Fallback"; font-weight: 600 900; src: local("Arial Bold"), local("Arial-BoldMT"), local("Arimo Bold"), local("Liberation Sans Bold"); size-adjust: 106.05%; ascent-override: 94.29%; descent-override: 24.99%; line-gap-override: 0%; }
 :root {
   --navy-950: #041a33;
   --navy-900: #062447;
@@ -11,9 +14,10 @@
   --cyan: #22b0ec;
   --green: #4fb12a;
   --green-600: #3f9620;
+  --green-700: #357f1b; /* chữ nhỏ trên nền trắng: đủ tương phản 4.5:1 */
   --ink: #0f1f33;
   --text: #33445a;
-  --muted: #677689;
+  --muted: #5f6e81;
   --line: #e2e9f1;
   --line-strong: #cfdae6;
   --bg: #ffffff;
@@ -29,7 +33,7 @@
   --grad-brand: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
   --grad-accent: linear-gradient(135deg, var(--green) 0%, #8bd13f 100%);
   --header-h: 76px;
-  --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font: "Be Vietnam Pro", "Be Vietnam Pro Fallback", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -242,7 +246,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .product-top .ic-lg { width: 54px; height: 54px; stroke-width: 1.4; }
 .product-code { position: absolute; left: 14px; top: 12px; font-size: .72rem; font-weight: 700; letter-spacing: .06em; background: #fff; color: var(--navy); border-radius: 6px; padding: 3px 8px; box-shadow: var(--shadow-sm); }
 .product-body { display: flex; flex-direction: column; flex: 1; padding: 18px 20px 20px; }
-.product-tag { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green-600); margin-bottom: 6px; }
+.product-tag { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green-700); margin-bottom: 6px; }
 .product h3 { font-size: 1rem; margin-bottom: 8px; }
 .product p { font-size: .86rem; color: var(--muted); margin-bottom: 14px; }
 .product-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 14px; border-top: 1px dashed var(--line); }
@@ -372,7 +376,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .sector { padding: 84px 0; }
 .sector-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
 .sector-alt .sector-copy { order: 2; }
-.sector-num { display: inline-block; font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--green-600); margin-bottom: 10px; }
+.sector-num { display: inline-block; font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--green-700); margin-bottom: 10px; }
 .sector-copy p { font-size: 1.02rem; }
 .sector-copy strong { color: var(--ink); }
 .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 26px; }
@@ -545,6 +549,8 @@ figure { margin: 0; }
 
 /* Lĩnh vực (trang chủ): mỗi thẻ có ảnh ngành ẩn phía sau, hiện rõ khi rê chuột */
 .industry { overflow: hidden; isolation: isolate; }
+/* Ảnh nền ở phần dưới trang chỉ tải khi sắp cuộn tới (script.js thêm lớp .bg-in) */
+.js .section-photo:not(.bg-in)::before, .js .industry:not(.bg-in)::before { background-image: none; }
 .industry::before { content: ""; position: absolute; inset: 0; z-index: -2; background: var(--bg, none) center / cover no-repeat; opacity: .26; filter: grayscale(1); transition: opacity .45s, transform .8s cubic-bezier(.2, .7, .2, 1); }
 .industry::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(4, 26, 51, .35), rgba(4, 26, 51, .92) 70%); }
 .industry:hover::before { opacity: .7; transform: scale(1.06); }
@@ -585,7 +591,9 @@ figure { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-bg img { animation: none; }
-  .tint img, .industry::before { transition: none; }
+  .tint img, /* Ảnh nền ở phần dưới trang chỉ tải khi sắp cuộn tới (script.js thêm lớp .bg-in) */
+.js .section-photo:not(.bg-in)::before, .js .industry:not(.bg-in)::before { background-image: none; }
+.industry::before { transition: none; }
 }
 
 /* ---------- Responsive ---------- */
@@ -695,4 +703,12 @@ figure { margin: 0; }
   .sector-visual::before { inset: 16px -8px -10px 16px; }
   .sector-alt .sector-visual::before { inset: 16px 16px -10px -8px; }
   .page-hero.has-photo { padding: 48px 0 56px; }
+}
+
+/* ---------- Trang 404 ---------- */
+.notfound { display: grid; grid-template-columns: minmax(0, 470px) 1fr; gap: 40px; align-items: center; }
+.notfound .search-card { margin: 0; }
+.notfound-links { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 920px) {
+  .notfound { grid-template-columns: 1fr; gap: 28px; }
 }

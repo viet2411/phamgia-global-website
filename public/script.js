@@ -7,8 +7,6 @@
 const FORM_ENDPOINT = '';
 const COMPANY_EMAIL = 'Phamgia.jsc2019@gmail.com';
 
-document.documentElement.classList.add('js');
-
 /* ---------- Danh mục sản phẩm tham khảo ----------
    featured: true  -> hiện ở mục "Thiết bị tiêu biểu" trên trang chủ */
 const products = [
@@ -205,6 +203,12 @@ $$('.reveal').forEach(el => {
   el.style.transitionDelay = `${Math.min(i, 6) * 80}ms`;
   reveal.observe(el);
 });
+
+/* Ảnh nền ở phần dưới trang: chỉ tải khi còn cách màn hình khoảng 600px */
+const lazyBg = new IntersectionObserver(entries => entries.forEach(en => {
+  if (en.isIntersecting) { en.target.classList.add('bg-in'); lazyBg.unobserve(en.target); }
+}), { rootMargin: '600px 0px' });
+$$('.section-photo, .industry').forEach(el => lazyBg.observe(el));
 
 /* Mở từ trang khác với #mục (VD: linh-vuc.html#uav): đảm bảo cuộn đúng mục sau khi trang dựng xong */
 if (location.hash) {
