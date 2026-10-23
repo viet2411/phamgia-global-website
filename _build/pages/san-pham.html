@@ -1,39 +1,51 @@
 <!--
-title: Sản phẩm & thiết bị | Phạm Gia Global
-desc: Danh mục thiết bị tham khảo: máy hàn, máy nén khí, máy phát điện, thiết bị thủy lực, sơn hàng hải, thiết bị PCCC, cứu hộ, UAV, robot. Tìm theo tên, model và gửi yêu cầu báo giá.
+title: Sản phẩm và thiết bị | Phạm Gia Global
+desc: Danh mục thiết bị tham khảo: máy hàn, máy nén khí, máy phát điện, thiết bị thủy lực, sơn hàng hải, thiết bị PCCC, cứu hộ, UAV, robot. Tìm theo tên, model và lập BOQ gửi báo giá.
 nav: products
 url: san-pham.html
 -->
 
-<section class="page-hero">
-  <div class="hero-pattern" aria-hidden="true"></div>
-  <div class="container">
+<section class="board page-head">
+  <div class="tile ph-text">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Trang chủ</a><span>/</span><span>Sản phẩm</span></nav>
-    <h1>Tìm đúng thiết bị – nhận báo giá nhanh</h1>
-    <p>Danh mục tham khảo. Giá bán được xác nhận theo thời điểm, số lượng và điều kiện giao hàng. Không thấy sản phẩm cần tìm? Hãy gửi yêu cầu – chúng tôi tìm nguồn giúp bạn.</p>
+    <div>
+      <h1>Chọn thiết bị, lập BOQ</h1>
+      <p>Thêm thiết bị vào BOQ, ghi số lượng, gửi một lần. Không thấy thứ cần tìm? Ghi vào yêu cầu, chúng tôi tìm nguồn giúp bạn.</p>
+    </div>
   </div>
+  <figure class="tile tile-photo ph-photo shutter">
+    <img src="assets/han-cat-day-tau.webp" alt="Tia lửa hàn cắt dưới đáy tàu trong xưởng" width="1600" height="1065" fetchpriority="high">
+  </figure>
 </section>
 
-<section class="section section-tight">
-  <div class="container">
-    <div class="product-toolbar">
-      <form class="searchbox searchbox-lg" id="productSearchForm" role="search">
-        <svg class="ic search-ic"><use href="#i-search"/></svg>
-        <label class="sr-only" for="productSearch">Tìm sản phẩm</label>
-        <input id="productSearch" name="q" type="search" placeholder="Tìm theo tên, model, thương hiệu hoặc nhóm thiết bị..." autocomplete="off">
-        <button type="submit">Tìm kiếm</button>
-      </form>
-      <button class="btn btn-outline" data-open-rfq><svg class="ic"><use href="#i-file"/></svg>Gửi BOQ</button>
-    </div>
-    <div class="filter-chips" id="filterChips" role="toolbar" aria-label="Lọc theo nhóm"></div>
-    <p class="result-count" id="resultCount" aria-live="polite"></p>
+<section aria-labelledby="catTitle">
+  <h2 class="sr-only" id="catTitle">Danh mục thiết bị</h2>
+  <div class="group-tiles" id="groupTiles" role="toolbar" aria-label="Lọc theo nhóm">
+    <button class="group-tile all" type="button" data-slug=""><span>Tất cả</span></button>
+    <button class="group-tile" type="button" data-slug="hang-hai"><img src="assets/son-than-tau.webp" alt="" width="1600" height="1039" loading="lazy"><span>Hàng hải</span></button>
+    <button class="group-tile" type="button" data-slug="cong-nghiep"><img src="assets/may-nen-khi-xuong.webp" alt="" width="1600" height="1200" loading="lazy"><span>Công nghiệp</span></button>
+    <button class="group-tile" type="button" data-slug="pccc"><img src="assets/binh-chua-chay.webp" alt="" width="1600" height="1200" loading="lazy"><span>PCCC và cứu hộ</span></button>
+    <button class="group-tile" type="button" data-slug="uav"><img src="assets/robot-han.webp" alt="" width="1600" height="1200" loading="lazy"><span>UAV, robot, công nghệ</span></button>
+  </div>
 
-    <div id="productGrid" class="product-grid"></div>
-
-    <div class="center">
-      <button class="btn btn-outline" data-open-rfq>Không thấy sản phẩm phù hợp? Gửi yêu cầu <svg class="ic"><use href="#i-arrow"/></svg></button>
+  <div class="board toolbar">
+    <form class="tile search-tile" id="productSearchForm" role="search">
+      <label class="sr-only" for="productSearch">Tìm sản phẩm</label>
+      <input id="productSearch" name="q" type="search" placeholder="Tìm theo tên, model hoặc nhóm thiết bị" autocomplete="off">
+      <button class="btn btn-ink" type="submit">Tìm</button>
+    </form>
+    <div class="tile tile-accent boq-tile">
+      <strong data-boq-count-text>BOQ của bạn đang trống</strong>
+      <button class="btn btn-ink" data-open-rfq>Gửi BOQ</button>
     </div>
   </div>
+
+  <p class="result-count" id="resultCount" aria-live="polite"></p>
+  <table class="ptable">
+    <thead><tr><th>Thiết bị</th><th>Nhóm</th><th>Model</th><th>Mô tả</th><th><span class="sr-only">Thêm vào BOQ</span></th></tr></thead>
+    <tbody id="productRows"></tbody>
+  </table>
+  <div id="productEmpty"></div>
 </section>
 
 %%BOQ%%
